@@ -1,0 +1,9 @@
+version: "2"
+services:
+  app:
+    container_name: home-cooking-api
+    build:
+      context: ../
+      dockerfile: home_cooking/Dockerfile
+    ports:
+    - "5000:5000"
