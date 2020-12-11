@@ -1,0 +1,2 @@
+docker image build -t home-cooking .
+docker run -d -p 5000:5000 home-cooking:latest
