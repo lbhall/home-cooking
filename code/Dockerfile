@@ -1,7 +1,11 @@
 FROM python:3
 
-ADD code/ /app
+ADD . /app
 WORKDIR /app
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update
 RUN pip install --upgrade pip

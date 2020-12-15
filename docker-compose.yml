@@ -1,9 +1,10 @@
-version: "2"
+version: '3.7'
+
 services:
-  app:
-    container_name: home-cooking-api
-    build:
-      context: ../
-      dockerfile: home_cooking/Dockerfile
+  api:
+    build: ./code
+    command: python app.py --host 0.0.0.0
+    volumes:
+      - ./code/:/app/
     ports:
-    - "5000:5000"
+      - "5000:5000"
