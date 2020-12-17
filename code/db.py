@@ -6,10 +6,10 @@ class Postgres:
     def connect():
         try:
             conn = psycopg2.connect(
-                host="192.168.0.11",
-                database="homecooking-dev",
-                user="bhall",
-                password="bandit")
+                host="db",
+                database="home_cooking_test",
+                user="home_cooking_user",
+                password="home_cooking_password")
             return conn
         except (Exception, psycopg2.DatabaseError) as error:
             logging.error("{}:{}".format(type(error).__name__, str(error)))

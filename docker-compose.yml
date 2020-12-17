@@ -4,7 +4,30 @@ services:
   api:
     build: ./code
     command: python app.py --host 0.0.0.0
+    environment:
+      STAGE: test
+      DATABASE_URI: postgresql+psycopg2://home_cooking_user:home_cooking_password@db/home_cooking_test
     volumes:
       - ./code/:/app/
     ports:
       - "5000:5000"
+    depends_on:
+      - db
+    networks:
+      - default
+    restart: always
+  db:
+    image: postgres:12-alpine
+    #volumes:
+    #  - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=home_cooking_user
+      - POSTGRES_PASSWORD=home_cooking_password
+      - POSTGRES_DB=home_cooking_test
+    networks:
+      - default
+    ports:
+      - 5405:5432
+    restart: always
+#volumes:
+#  postgres_data:
