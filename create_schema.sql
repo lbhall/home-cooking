@@ -228,7 +228,7 @@ BEGIN
         --add ingredients for recipe
         INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Ham Bone', 0, '', '1');
         INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Ham Juice', 1, 'oz', '8');
-        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Ham', 'cups', '', '4');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Ham cubed', 2, 'cups', '4');
         INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Parsnips', 3, 'bunch', '1/2');
         INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Carrots', 4, '', '5');
         INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Beans', 5, 'to taste', '');

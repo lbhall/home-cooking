@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Api
+from flask_cors import CORS
 from resources.recipe import RecipeList, Recipe
 from resources.ingredient import IngredientList, Ingredient
 import logging
@@ -11,6 +12,8 @@ app = Flask(__name__)
 app.config.update(
     ENV='development'
 )
+
+CORS(app)
 
 api = Api(app)
 

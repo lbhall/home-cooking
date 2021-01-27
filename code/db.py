@@ -6,7 +6,7 @@ class Postgres:
     def connect():
         try:
             conn = psycopg2.connect(
-                host="db",
+                host="localhost",
                 database="home_cooking_test",
                 user="home_cooking_user",
                 password="home_cooking_password")
