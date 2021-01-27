@@ -178,6 +178,63 @@ BEGIN
         INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Water', 15, 'cups', '6');
         INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Long Grain Rice', 16, 'cups', '2');
     END IF;
+
+        --add base recipes
+    IF NOT EXISTS(SELECT ID FROM recipes WHERE name = 'Pico de Gallo') THEN
+        INSERT INTO recipes(
+            name,
+            description,
+            servings,
+            prep_time,
+            cook_time) values
+            (
+             'Pico de Gallo',
+             'Pico de Gallo or salsa fresca is traditionally made from chopped tomato, onion, serrano peppers, with salt, lime juice, and cilantro.',
+             16,
+             30,
+             0
+            );
+        SELECT ID INTO _id FROM recipes WHERE name = 'Hall''s BBQ Rub';
+        -- add steps for recipe
+        INSERT INTO steps (recipe_id, description, position) VALUES (_id, 'Combine all ingredients into a bowl, mixing them thoroughly together.', 0);
+        --add ingredients for recipe
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Roma Tomatos', 0, '', '8');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'White onions', 1, 'medium', '2');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Jalopeno', 2, '', '2');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Cilantro', 3, 'bunch', '1/2');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Limes', 4, '', '3');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Salt', 5, 'to taste', '');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Pepper', 6, 'to taste', '');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Garlic Powder', 7, 'to taste', '');
+    END IF;
+
+    IF NOT EXISTS(SELECT ID FROM recipes WHERE name = 'Ham & Bean Soup') THEN
+        INSERT INTO recipes(
+            name,
+            description,
+            servings,
+            prep_time,
+            cook_time) values
+            (
+             'Ham & Bean Soup',
+             'Hearty Soup made from leftover ham..',
+             16,
+             30,
+             0
+            );
+        SELECT ID INTO _id FROM recipes WHERE name = 'Hall''s BBQ Rub';
+        -- add steps for recipe
+        INSERT INTO steps (recipe_id, description, position) VALUES (_id, 'Combine all ingredients into a bowl, mixing them thoroughly together.', 0);
+        --add ingredients for recipe
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Ham Bone', 0, '', '1');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Ham Juice', 1, 'oz', '8');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Ham', 'cups', '', '4');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Parsnips', 3, 'bunch', '1/2');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Carrots', 4, '', '5');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Beans', 5, 'to taste', '');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Onions', 6, '', '2');
+        INSERT INTO recipe_ingredients(recipe_id, name, position, unit, amount) values (_id, 'Celery', 7, 'ribs', '5');
+    END IF;
 END;
 $$;
 

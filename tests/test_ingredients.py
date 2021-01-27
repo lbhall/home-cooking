@@ -20,12 +20,14 @@ def pretty_print_response(response):
     )
 
 
-existing_recipes = {}
-BASE_URL = 'http://127.0.0.1:5000/recipes'
+existing_ingredients = {}
+BASE_URL = 'http://127.0.0.1:5000/ingredients'
+new_id = -1
+
 
 def test_get_recipe_list():
     global BASE_URL
-    global existing_recipes
+    global existing_ingredients
 
     # additional headers.
     headers = {'Content-Type': 'application/json'}
@@ -37,7 +39,7 @@ def test_get_recipe_list():
 
     # Validate response
     assert response.status_code == 200
-    existing_recipes = response.json()
+    existing_ingredients = response.json()
 
     # print full request and response
     pretty_print_request(response.request)
@@ -45,19 +47,21 @@ def test_get_recipe_list():
 
 
 def test_post_recipe_list():
-    global BASE_URL
+    global RECIPE_URL
     global existing_recipes
 
     # additional headers.
     headers = {'Content-Type': 'application/json'}
 
     # body
-    payload = {}
+    payload = {
+        'name':'test ingredient'
+    }
 
-    response = requests.get(BASE_URL, headers=headers, data=json.dumps(payload, indent=4))
+    response = requests.post(RECIPE_URL, headers=headers, data=json.dumps(payload, indent=4))
 
     # Validate response
-    assert response.status_code == 200
+    assert response.status_code == 201
     existing_recipes = response.json()
 
     # print full request and response
